@@ -15,10 +15,9 @@ class EntitlementsClient implements EntitlementsClientInterface
     }
 
     /**
-     * @param string $method GET/POST
      * @throws EntitlementsClientException
      */
-    private function request(string $method, string $uri, array $query = []): array
+    private function request(string $uri, array $query = []): array
     {
         $url = $this->buildUrl($uri, $query);
 
@@ -28,17 +27,13 @@ class EntitlementsClient implements EntitlementsClientInterface
             CURLOPT_RETURNTRANSFER => true
         ]);
 
-        if ($method === 'POST') {
-            curl_setopt($ch, CURLOPT_POST, true);
-        }
-
         $response = curl_exec($ch);
         $statusCode = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         curl_close($ch);
 
         $requestInfo = [
             'requestURL' => $url,
-            'requestMethod' => $method,
+            'requestMethod' => 'GET',
             'responseCode' => $statusCode,
             'responseBody' => (string) $response
         ];
@@ -69,6 +64,6 @@ class EntitlementsClient implements EntitlementsClientInterface
      */
     public function getPermits(string $app, array $products, array $additionalParameters = []): array
     {
-        return $this->request('GET', 'permits', compact('app', 'products', 'additionalParameters'));
+        return $this->request('permits', compact('app', 'products', 'additionalParameters'));
     }
 }
