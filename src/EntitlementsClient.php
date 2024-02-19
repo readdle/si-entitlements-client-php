@@ -18,7 +18,7 @@ class EntitlementsClient implements EntitlementsClientInterface
      * @param string $method GET/POST
      * @throws EntitlementsClientException
      */
-    public function request(string $method, string $uri, array $query = []): array
+    private function request(string $method, string $uri, array $query = []): array
     {
         $url = $this->buildUrl($uri, $query);
 

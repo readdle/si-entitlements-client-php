@@ -5,5 +5,5 @@ namespace Readdle\EntitlementsClient;
 
 interface EntitlementsClientInterface
 {
-    public function request(string $method, string $uri, array $query = []): array;
+    public function getPermits(string $app, array $products, array $additionalParameters = []): array;
 }
