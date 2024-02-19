@@ -1,0 +1,15 @@
+{
+    "name": "readdle/si-entitlements-client-php",
+    "description": "Client for entitlements service",
+    "type": "library",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Readdle\\EntitlementsClient\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "ext-curl": "*"
+    }
+}
