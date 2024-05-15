@@ -62,8 +62,12 @@ class EntitlementsClient implements EntitlementsClientInterface
     /**
      * @throws EntitlementsClientException
      */
-    public function getPermits(string $app, array $products, array $additionalParameters = []): array
-    {
-        return $this->request('permits', compact('app', 'products', 'additionalParameters'));
+    public function getPermits(
+        ?string $app = null,
+        array $products = [],
+        array $additionalParameters = [],
+        array $bundles = []
+    ): array {
+        return $this->request('permits', array_filter(compact('app', 'products', 'bundles', 'additionalParameters')));
     }
 }
