@@ -7,10 +7,6 @@ use Readdle\EntitlementsClient\Exception\EntitlementsClientException;
 
 class EntitlementsClient implements EntitlementsClientInterface
 {
-    public const FILTER_TYPE_ALL = 'all';
-    public const FILTER_TYPE_PERMITTED = 'permitted';
-    public const FILTER_TYPE_BLOCKED = 'blocked';
-
     private string $baseUri;
 
     public function __construct(string $baseURL)
