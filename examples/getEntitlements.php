@@ -3,13 +3,14 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Readdle\EntitlementsClient\EntitlementsClient;
+use Readdle\EntitlementsClient\EntitlementsClientInterface;
 use Readdle\EntitlementsClient\Exception\EntitlementsClientException;
 
 $client = new EntitlementsClient('https://entitlementer-dev.apps.readdle.com');
 
 try {
     $app = 'PDFExpert';
-    $filterType = EntitlementsClient::FILTER_TYPE_ALL;
+    $filterType = EntitlementsClientInterface::FILTER_TYPE_ALL;
     $parameters = [
         'countryCode' => 'FR'
     ];
