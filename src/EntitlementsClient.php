@@ -7,6 +7,10 @@ use Readdle\EntitlementsClient\Exception\EntitlementsClientException;
 
 class EntitlementsClient implements EntitlementsClientInterface
 {
+    public const FILTER_TYPE_ALL = 'all';
+    public const FILTER_TYPE_PERMITTED = 'permitted';
+    public const FILTER_TYPE_BLOCKED = 'blocked';
+
     private string $baseUri;
 
     public function __construct(string $baseURL)
@@ -69,5 +73,16 @@ class EntitlementsClient implements EntitlementsClientInterface
         array $bundles = []
     ): array {
         return $this->request('permits', array_filter(compact('app', 'products', 'bundles', 'additionalParameters')));
+    }
+
+    /**
+     * @throws EntitlementsClientException
+     */
+    public function getEntitlements(
+        ?string $app = null,
+        string $filterType = self::FILTER_TYPE_ALL,
+        array $additionalParameters = []
+    ): array {
+        return $this->request('entitlements', array_filter(compact('app', 'filterType', 'additionalParameters')));
     }
 }
