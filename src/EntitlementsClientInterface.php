@@ -9,7 +9,12 @@ interface EntitlementsClientInterface
     public const FILTER_TYPE_PERMITTED = 'permitted';
     public const FILTER_TYPE_BLOCKED = 'blocked';
 
-    public function getPermits(string $app, array $products, array $additionalParameters = []): array;
+    public function getPermits(
+        ?string $app = null,
+        array $products = [],
+        array $additionalParameters = [],
+        array $bundles = []
+    ): array;
 
     public function getEntitlements(
         ?string $app = null,
